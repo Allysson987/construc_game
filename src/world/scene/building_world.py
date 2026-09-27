@@ -13,7 +13,7 @@ class BuildingWorld:
 
                 building = Entity(
                     model='cube',
-                    color=color.red,
+                    color=color.green,
                     position=(x, 0, z),
                     scale=(1, 1, 1),
                     collider='box'
