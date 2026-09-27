@@ -3,13 +3,8 @@ from ursina import Entity
 
 class Block(Entity):
 
-    def __init__(
-        self,
-        name,
-        resistance,
-        hardness,
-        **kwargs
-    ):
+    def __init__(self, name, resistance, hardness, **kwargs):
+
         super().__init__(
             model='cube',
             collider='box',
@@ -22,6 +17,7 @@ class Block(Entity):
         self.hardness = hardness
 
     def damage(self, amount):
+
         self.resistance -= amount
 
         print(
@@ -30,8 +26,16 @@ class Block(Entity):
         )
 
         if self.resistance <= 0:
-            self.break_block()
+            return self.break_block()
+
+        return None
 
     def break_block(self):
-        print(f"{self.name} quebrado!")
+
+        print(
+            f"{self.name} quebrado!"
+        )
+
         self.disable()
+
+        return self.name
