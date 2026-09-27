@@ -3,6 +3,7 @@ from ursina import *
 from src.world.scene.building_world import BuildingWorld
 from src.world.camera.camera import Camera
 from src.controls.controls import Controls
+from src.controls.block_interaction import BlockInteraction
 from src.players.players import Player
 
 
@@ -12,7 +13,9 @@ class Orchestra:
 
         self.app = Ursina()
 
-        self.building_world = BuildingWorld(self.app)
+        self.building_world = BuildingWorld(
+            self.app
+        )
 
         self.player = Player(
             position=(7, 2, -5)
@@ -21,6 +24,10 @@ class Orchestra:
         self.camera = Camera()
 
         self.controls = Controls(
+            self.player
+        )
+
+        self.block_interaction = BlockInteraction(
             self.player
         )
 
@@ -37,14 +44,25 @@ class Orchestra:
 
 start = Orchestra()
 
+start = Orchestra()
+
 
 def update():
 
-    
-
     start.controls.update()
 
-    start.camera.follow_player(start.player)
+    start.camera.follow_player(
+        start.player
+    )
 
+    start.camera.mouse_look()
+
+
+def input(key):
+
+    start.block_interaction.input(key)
+
+
+# start.run()
 
 start.run()
