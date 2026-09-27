@@ -22,11 +22,37 @@ class Orchestra:
         )
 
         # =========================
+        # GERAR MUNDO
+        # =========================
+
+        self.building_world.run()
+
+        # =========================
+        # POSIÇÃO DO PLAYER
+        # =========================
+
+        player_x = 8
+        player_z = 8
+
+        # Descobre a altura do terreno
+        player_y = self.building_world.get_terrain_height(
+            player_x,
+            player_z
+        )
+
+        # Coloca o Player acima do terreno
+        player_position = (
+            player_x,
+            player_y + 1,
+            player_z
+        )
+
+        # =========================
         # PLAYER
         # =========================
 
         self.player = Player(
-            position=(7, 2, -5),
+            position=player_position,
             building_world=self.building_world
         )
 
@@ -47,8 +73,6 @@ class Orchestra:
     def run(self):
 
         Sky()
-
-        self.building_world.run()
 
         self.camera.run()
 

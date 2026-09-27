@@ -209,8 +209,6 @@ class Player(Entity):
         )
 
         if item:
-
-            sif item:
-    self.add_item(item)
-    self.select_item(item)
+            self.add_item(item)
+            self.select_item(item)
 
