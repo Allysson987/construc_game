@@ -1,9 +1,9 @@
+
 from ursina import *
 
 from src.world.scene.building_world import BuildingWorld
 from src.world.camera.camera import Camera
 from src.controls.controls import Controls
-from src.controls.block_interaction import BlockInteraction
 from src.players.players import Player
 
 
@@ -13,21 +13,34 @@ class Orchestra:
 
         self.app = Ursina()
 
+        # =========================
+        # MUNDO
+        # =========================
+
         self.building_world = BuildingWorld(
             self.app
         )
 
+        # =========================
+        # PLAYER
+        # =========================
+
         self.player = Player(
-            position=(7, 2, -5)
+            position=(7, 2, -5),
+            building_world=self.building_world
         )
+
+        # =========================
+        # CAMERA
+        # =========================
 
         self.camera = Camera()
 
-        self.controls = Controls(
-            self.player
-        )
+        # =========================
+        # CONTROLES
+        # =========================
 
-        self.block_interaction = BlockInteraction(
+        self.controls = Controls(
             self.player
         )
 
@@ -41,8 +54,6 @@ class Orchestra:
 
         self.app.run()
 
-
-start = Orchestra()
 
 start = Orchestra()
 
@@ -60,9 +71,16 @@ def update():
 
 def input(key):
 
-    start.block_interaction.input(key)
+    # Botão esquerdo = quebrar
+    if key == 'left mouse down':
 
+        start.player.break_block()
 
-# start.run()
+    # Botão direito = colocar
+    if key == 'right mouse down':
+
+        start.player.place_selected_item()
+
 
 start.run()
+
