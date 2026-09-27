@@ -1,17 +1,34 @@
+from ursina import color
 from src.world.blocks.block_controls import Block
+
 
 class Wood(Block):
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__(
             name="Madeira",
             resistance=40,
-            hardness=2
+            hardness=2,
+            color=color.brown,
+            **kwargs
         )
+
+
+class Leaf(Block):
+
+    def __init__(self, **kwargs):
+        super().__init__(
+            name="Folha",
+            resistance=10,
+            hardness=1,
+            color=color.rgb(0, 140, 0),
+            **kwargs
+        )
+
+
 class Stone(Block):
 
     def __init__(self, **kwargs):
-
         super().__init__(
             name="Pedra",
             resistance=100,
@@ -19,10 +36,11 @@ class Stone(Block):
             color=color.gray,
             **kwargs
         )
+
+
 class Grass(Block):
 
     def __init__(self, **kwargs):
-
         super().__init__(
             name="Grama",
             resistance=20,

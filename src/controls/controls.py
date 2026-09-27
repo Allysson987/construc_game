@@ -11,14 +11,23 @@ class Controls:
 
         speed = self.speed * time.dt
 
+        # Frente / trás
         if held_keys['w']:
             self.camera.z += speed
 
         if held_keys['s']:
             self.camera.z -= speed
 
+        # Esquerda / direita
         if held_keys['a']:
             self.camera.x -= speed
 
         if held_keys['d']:
             self.camera.x += speed
+
+        # Cima / baixo
+        if held_keys['q']:
+            self.camera.y += speed
+
+        if held_keys['e']:
+            self.camera.y -= speed
