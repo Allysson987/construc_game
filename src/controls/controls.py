@@ -3,31 +3,23 @@ from ursina import held_keys, time
 
 class Controls:
 
-    def __init__(self, camera):
-        self.camera = camera
+    def __init__(self, player):
+
+        self.player = player
         self.speed = 5
 
-    def update_camera(self):
+    def update(self):
 
         speed = self.speed * time.dt
 
-        # Frente / trás
         if held_keys['w']:
-            self.camera.z += speed
+            self.player.z += speed
 
         if held_keys['s']:
-            self.camera.z -= speed
+            self.player.z -= speed
 
-        # Esquerda / direita
         if held_keys['a']:
-            self.camera.x -= speed
+            self.player.x -= speed
 
         if held_keys['d']:
-            self.camera.x += speed
-
-        # Cima / baixo
-        if held_keys['q']:
-            self.camera.y += speed
-
-        if held_keys['e']:
-            self.camera.y -= speed
+            self.player.x += speed

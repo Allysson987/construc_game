@@ -11,7 +11,7 @@ class Tree:
     def create_tree(self):
 
         # Tronco
-        for y in range(3):
+        for y in range(5):
 
             block = Wood()
 
@@ -24,7 +24,7 @@ class Tree:
             self.blocks.append(block)
 
         # Folhas
-        for x in range(-1, 2):
+        for x in range(-2, 3):
 
             for z in range(-1, 2):
 
