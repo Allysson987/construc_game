@@ -9,7 +9,7 @@ class Wood(Block):
             name="Madeira",
             resistance=40,
             hardness=2,
-            color=color.brown,
+            texture=rf'data\textures\wood.png',
             **kwargs
         )
 
@@ -45,6 +45,6 @@ class Grass(Block):
             name="Grama",
             resistance=20,
             hardness=1,
-            color=color.green,
+            texture=rf'data\textures\grass.png',
             **kwargs
         )
